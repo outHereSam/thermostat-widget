@@ -156,3 +156,16 @@ document.getElementById("reduce").addEventListener("click", () => {
 
   currentTemp.textContent = `${room.currTemp}°`;
 });
+
+// Set preset temperatures
+document.getElementById("cool").addEventListener("click", () => {
+  const room = rooms.find((currRoom) => currRoom.name === selectedRoom);
+
+  currentTemp.textContent = `${room.coldPreset}°`;
+});
+
+document.getElementById("warm").addEventListener("click", () => {
+  const room = rooms.find((currRoom) => currRoom.name === selectedRoom);
+
+  currentTemp.textContent = `${room.warmPreset}°`;
+});
