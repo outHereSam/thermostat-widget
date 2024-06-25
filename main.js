@@ -163,11 +163,13 @@ document.getElementById("reduce").addEventListener("click", () => {
 document.getElementById("cool").addEventListener("click", () => {
   const room = rooms.find((currRoom) => currRoom.name === selectedRoom);
 
-  currentTemp.textContent = `${room.coldPreset}°`;
+  room.setCurrTemp(room.coldPreset);
+  currentTemp.textContent = `${room.currTemp}°`;
 });
 
 document.getElementById("warm").addEventListener("click", () => {
   const room = rooms.find((currRoom) => currRoom.name === selectedRoom);
 
-  currentTemp.textContent = `${room.warmPreset}°`;
+  room.setCurrTemp(room.warmPreset);
+  currentTemp.textContent = `${room.currTemp}°`;
 });
