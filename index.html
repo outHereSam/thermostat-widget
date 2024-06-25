@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Manrope Font Embeded -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- JS -->
+    <script src="./main.js" defer></script>
+
+    <title>Smart Home | Thermostat Widget</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="top-content">
+        <h1 class="logo">Thermostat</h1>
+        <select id="rooms">
+          <option value="livingRoom">Living Room</option>
+          <option value="kitchen">Kitchen</option>
+          <option value="bathroom">Bathroom</option>
+          <option value="bedroom">Bedroom</option>
+        </select>
+      </div>
+
+      <div class="main-content">
+        <div class="temperature">
+          <div class="info">
+            <p>Current Temp</p>
+            <h1 id="temp">35°</h1>
+          </div>
+        </div>
+        <div class="temp-range">
+          <span class="knob">
+            <span class="inner"></span>
+          </span>
+        </div>
+
+        <div class="default-settings">
+          <button id="cool">
+            <ion-icon size="large" name="snow-outline"></ion-icon>
+            Cold
+          </button>
+          <button id="warm">
+            <ion-icon size="large" name="leaf"></ion-icon>
+            warm
+          </button>
+        </div>
+
+        <div class="controls">
+          <p>Set Temperature</p>
+          <div class="buttons">
+            <button id="reduce">
+              <ion-icon size="large" name="remove-outline"></ion-icon>
+            </button>
+            <button id="increase">
+              <ion-icon size="large" name="add-outline"></ion-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ionicons -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>
