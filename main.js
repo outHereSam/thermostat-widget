@@ -116,8 +116,6 @@ let selectedRoom = rooms[0].name;
 // Set default temperature
 currentTemp.textContent = `${rooms[0].currTemp}°`;
 
-console.log(currentTemp.textContent);
-
 // Add new options from rooms array
 rooms.forEach((room) => {
   const option = document.createElement("option");
@@ -144,7 +142,9 @@ defaultSettings.addEventListener("click", function (e) {});
 document.getElementById("increase").addEventListener("click", () => {
   const room = rooms.find((currRoom) => currRoom.name === selectedRoom);
 
-  room.increaseTemp();
+  if (room.currTemp < 32) {
+    room.increaseTemp();
+  }
 
   currentTemp.textContent = `${room.currTemp}°`;
 });
@@ -152,7 +152,9 @@ document.getElementById("increase").addEventListener("click", () => {
 document.getElementById("reduce").addEventListener("click", () => {
   const room = rooms.find((currRoom) => currRoom.name === selectedRoom);
 
-  room.decreaseTemp();
+  if (room.currTemp > 10) {
+    room.decreaseTemp();
+  }
 
   currentTemp.textContent = `${room.currTemp}°`;
 });

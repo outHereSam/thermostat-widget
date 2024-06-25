@@ -165,3 +165,7 @@ body {
 .selected {
   background-color: #adbaff;
 }
+
+.hidden {
+  display: none;
+}
