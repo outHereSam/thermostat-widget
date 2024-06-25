@@ -148,3 +148,11 @@ document.getElementById("increase").addEventListener("click", () => {
 
   currentTemp.textContent = `${room.currTemp}°`;
 });
+
+document.getElementById("reduce").addEventListener("click", () => {
+  const room = rooms.find((currRoom) => currRoom.name === selectedRoom);
+
+  room.decreaseTemp();
+
+  currentTemp.textContent = `${room.currTemp}°`;
+});
