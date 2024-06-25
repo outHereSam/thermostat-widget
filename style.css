@@ -63,10 +63,6 @@ body {
   font-weight: 500;
 }
 
-.temperature {
-  /* margin: 0 0 50px 0; */
-}
-
 .info {
   text-align: center;
 }
@@ -164,4 +160,8 @@ body {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
+}
+
+.selected {
+  background-color: #adbaff;
 }
