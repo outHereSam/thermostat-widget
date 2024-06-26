@@ -169,3 +169,15 @@ body {
 .hidden {
   display: none;
 }
+
+@media only screen and (max-width: 470px) {
+  .container {
+    width: 360px;
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  .container {
+    width: 320px;
+  }
+}
