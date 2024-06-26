@@ -23,7 +23,7 @@ button {
 }
 
 body {
-  height: 100vh;
+  min-height: 100vh;
   background-color: var(--bg-light);
   display: flex;
   justify-content: center;
@@ -48,7 +48,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 0 50px 0;
+  margin: 0 0 100px 0;
 }
 
 .logo {
@@ -74,10 +74,39 @@ body {
   letter-spacing: 3px;
 }
 
+.temperature {
+  position: relative;
+  /* border: solid 2px pink; */
+}
+
+.temperature svg {
+  /* border: solid 1px black; */
+  position: absolute;
+  left: -100px;
+  top: -75px;
+  height: 260px;
+  /* margin: 50px 0 50px 0; */
+}
+.indicator {
+  position: relative;
+}
+
+svg.point {
+  /* border: solid 1px pink; */
+  position: absolute;
+  left: -73px;
+  top: 30px;
+  height: 24px;
+  z-index: 10;
+  /* transform: translate(10px, -10px); */
+}
+
 #temp {
   font-size: 72px;
 }
+
 .temp-range {
+  display: none;
   position: relative;
   width: 100%;
   height: 8px;
@@ -108,7 +137,7 @@ body {
   background-color: var(--accent);
 }
 .default-settings {
-  margin: 50px 0 20px 0;
+  margin: 100px 0 20px 0;
   padding: 10px;
   border-radius: 60px;
   display: flex;
