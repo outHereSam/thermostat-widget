@@ -178,7 +178,7 @@ const setIndicatorPoint = (currTemp) => {
       svgPoint.style.transform = "translate(48px, -88px)";
       break;
     case 32:
-      svgPoint.style.transform = "translate(58px, -96px)";
+      svgPoint.style.transform = "translate(58px, -94px)";
       break;
 
     default:
