@@ -73,6 +73,7 @@ body {
   color: var(--text-secondary);
   letter-spacing: 3px;
 }
+
 #temp {
   font-size: 72px;
 }

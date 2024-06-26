@@ -207,13 +207,11 @@ document.getElementById("save").addEventListener("click", () => {
     // Validation passed
     // Set current room's presets
     const currRoom = rooms.find((room) => room.name === selectedRoom);
-    console.log(`Cool preset before: ${currRoom.coldPreset}`);
-    console.log(`Warm preset before: ${currRoom.warmPreset}`);
 
     currRoom.setColdPreset(coolInput.value);
     currRoom.setWarmPreset(warmInput.value);
 
-    console.log(`Cool preset after: ${currRoom.coldPreset}`);
-    console.log(`Warm preset after: ${currRoom.warmPreset}`);
+    coolInput.value = "";
+    warmInput.value = "";
   }
 });
