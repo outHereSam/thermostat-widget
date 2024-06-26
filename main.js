@@ -173,3 +173,47 @@ document.getElementById("warm").addEventListener("click", () => {
   room.setCurrTemp(room.warmPreset);
   currentTemp.textContent = `${room.currTemp}°`;
 });
+
+const inputsDiv = document.querySelector(".inputs");
+// Toggle preset inputs
+document.getElementById("newPreset").addEventListener("click", () => {
+  if (inputsDiv.classList.contains("hidden")) {
+    inputsDiv.classList.remove("hidden");
+  }
+});
+
+// close inputs
+document.getElementById("close").addEventListener("click", () => {
+  inputsDiv.classList.add("hidden");
+});
+
+// handle preset input data
+document.getElementById("save").addEventListener("click", () => {
+  const coolInput = document.getElementById("coolInput");
+  const warmInput = document.getElementById("warmInput");
+  const errorSpan = document.querySelector(".error");
+
+  if (coolInput.value && warmInput.value) {
+    // Validate the data
+    if (coolInput.value < 10 || coolInput.value > 22) {
+      errorSpan.style.display = "block";
+      errorSpan.innerText = "Enter valid temperatures (10° - 32°)";
+    }
+
+    if (warmInput.value < 22 || warmInput.value > 32) {
+      errorSpan.style.display = "block";
+      errorSpan.innerText = "Enter valid temperatures (10° - 32°)";
+    }
+    // Validation passed
+    // Set current room's presets
+    const currRoom = rooms.find((room) => room.name === selectedRoom);
+    console.log(`Cool preset before: ${currRoom.coldPreset}`);
+    console.log(`Warm preset before: ${currRoom.warmPreset}`);
+
+    currRoom.setColdPreset(coolInput.value);
+    currRoom.setWarmPreset(warmInput.value);
+
+    console.log(`Cool preset after: ${currRoom.coldPreset}`);
+    console.log(`Warm preset after: ${currRoom.warmPreset}`);
+  }
+});

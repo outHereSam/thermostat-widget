@@ -51,6 +51,33 @@
           </button>
         </div>
 
+        <div class="configure">
+          <button id="newPreset">
+            <ion-icon name="cog"></ion-icon>Configure Presets
+          </button>
+        </div>
+
+        <div class="inputs hidden">
+          <input
+            id="coolInput"
+            type="number"
+            min="10"
+            max="22"
+            placeholder="Cool"
+          />
+          <input
+            id="warmInput"
+            type="number"
+            min="22"
+            max="32"
+            placeholder="Warm"
+          />
+          <button id="save">Save</button>
+          <button id="close"><ion-icon name="close"></ion-icon></button>
+
+          <span class="error"></span>
+        </div>
+
         <div class="controls">
           <p>Set Temperature</p>
           <div class="buttons">
