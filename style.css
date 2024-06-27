@@ -254,10 +254,6 @@ svg.point {
   transition: background-color 0.3s ease-in-out;
 }
 
-.selected {
-  background-color: #adbaff;
-}
-
 .hidden {
   display: none;
 }

@@ -230,6 +230,9 @@ document.getElementById("increase").addEventListener("click", () => {
 
   setIndicatorPoint(room.currTemp);
   currentTemp.textContent = `${room.currTemp}°`;
+
+  warmBtn.style.backgroundColor = "#d9d9d9";
+  coolBtn.style.backgroundColor = "#d9d9d9";
 });
 
 document.getElementById("reduce").addEventListener("click", () => {
@@ -241,25 +244,37 @@ document.getElementById("reduce").addEventListener("click", () => {
 
   setIndicatorPoint(room.currTemp);
   currentTemp.textContent = `${room.currTemp}°`;
+
+  warmBtn.style.backgroundColor = "#d9d9d9";
+  coolBtn.style.backgroundColor = "#d9d9d9";
 });
 
+const coolBtn = document.getElementById("cool");
+const warmBtn = document.getElementById("warm");
+
 // Set preset temperatures
-document.getElementById("cool").addEventListener("click", () => {
+coolBtn.addEventListener("click", () => {
   const room = rooms.find((currRoom) => currRoom.name === selectedRoom);
 
   room.setCurrTemp(room.coldPreset);
   setIndicatorPoint(room.currTemp);
 
   currentTemp.textContent = `${room.currTemp}°`;
+
+  warmBtn.style.backgroundColor = "#d9d9d9";
+  coolBtn.style.backgroundColor = "#adbaff";
 });
 
-document.getElementById("warm").addEventListener("click", () => {
+warmBtn.addEventListener("click", () => {
   const room = rooms.find((currRoom) => currRoom.name === selectedRoom);
 
   room.setCurrTemp(room.warmPreset);
   setIndicatorPoint(room.currTemp);
 
   currentTemp.textContent = `${room.currTemp}°`;
+
+  coolBtn.style.backgroundColor = "#d9d9d9";
+  warmBtn.style.backgroundColor = "#ff9799";
 });
 
 const inputsDiv = document.querySelector(".inputs");
