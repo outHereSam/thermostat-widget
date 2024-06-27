@@ -83,19 +83,21 @@ body {
   /* border: solid 1px black; */
   position: absolute;
   left: -100px;
-  top: -75px;
+  top: -68px;
   height: 250px;
   /* margin: 50px 0 50px 0; */
+  /* display: none; */
 }
 .indicator {
   position: relative;
 }
 
 svg.point {
+  /* display: none; */
   /* border: solid 1px pink; */
   position: absolute;
-  left: 35px;
-  top: 38px;
+  left: 38px;
+  top: 40px;
   height: 24px;
   z-index: 10;
   transition: transform 0.2s ease-in-out;
@@ -130,6 +132,7 @@ svg.point {
   background-color: var(--text-secondary);
   transition: left 0.2s ease-in-out;
 }
+
 .inner {
   display: block;
   width: 6px;
@@ -256,6 +259,26 @@ svg.point {
 
 .hidden {
   display: none;
+}
+
+.room {
+  width: 100%;
+  height: 200px;
+  margin: 50px 0 0 0;
+  position: relative;
+  /* background-image: url("./assets/living-room.jpg"); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  padding: 20px;
+}
+.room .text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #ffffff;
+  z-index: 10;
 }
 
 @media only screen and (max-width: 470px) {

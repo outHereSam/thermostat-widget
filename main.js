@@ -5,6 +5,7 @@ const rooms = [
     currTemp: 32,
     coldPreset: 20,
     warmPreset: 32,
+    image: "./assets/living-room.jpg",
 
     setCurrTemp(temp) {
       this.currTemp = temp;
@@ -31,6 +32,7 @@ const rooms = [
     currTemp: 29,
     coldPreset: 20,
     warmPreset: 32,
+    image: "./assets/kitchen.jpg",
 
     setCurrTemp(temp) {
       this.currTemp = temp;
@@ -57,6 +59,7 @@ const rooms = [
     currTemp: 30,
     coldPreset: 20,
     warmPreset: 32,
+    image: "./assets/bathroom.jpg",
 
     setCurrTemp(temp) {
       this.currTemp = temp;
@@ -83,6 +86,7 @@ const rooms = [
     currTemp: 31,
     coldPreset: 20,
     warmPreset: 32,
+    image: "./assets/bedroom.jpg",
 
     setCurrTemp(temp) {
       this.currTemp = temp;
@@ -108,7 +112,7 @@ const rooms = [
 
 // Set svg accordingly
 const svgPoint = document.querySelector(".point");
-const angleOffset = 80;
+const angleOffset = 86;
 const calculatePointPosition = (currTemp) => {
   const normalizedTemp = (currTemp - 10) / (32 - 10);
   const angle = normalizedTemp * 180 + angleOffset;
@@ -138,6 +142,11 @@ let selectedRoom = rooms[0].name;
 currentTemp.textContent = `${rooms[0].currTemp}°`;
 setIndicatorPoint(rooms[0].currTemp);
 
+document.querySelector(
+  ".room"
+).style.backgroundImage = `url('${rooms[0].image}')`;
+
+document.querySelector(".currentTemp").innerText = `${rooms[0].currTemp}°`;
 // Add new options from rooms array
 rooms.forEach((room) => {
   const option = document.createElement("option");
@@ -155,6 +164,16 @@ roomSelect.addEventListener("change", function () {
 
   //   set the current stats to current room temperature
   currentTemp.textContent = `${room.currTemp}°`;
+
+  // Set the current room image
+  document.querySelector(
+    ".room"
+  ).style.backgroundImage = `url('${room.image}')`;
+
+  // Set the current room name
+  document.querySelector(".room-name").innerText = selectedRoom;
+
+  document.querySelector(".currentTemp").innerText = `${room.currTemp}°`;
 });
 
 // Set current temperature to to cold or warm preset
@@ -174,6 +193,8 @@ document.getElementById("increase").addEventListener("click", () => {
 
   warmBtn.style.backgroundColor = "#d9d9d9";
   coolBtn.style.backgroundColor = "#d9d9d9";
+
+  document.querySelector(".currentTemp").innerText = `${room.currTemp}°`;
 });
 
 document.getElementById("reduce").addEventListener("click", () => {
@@ -188,6 +209,8 @@ document.getElementById("reduce").addEventListener("click", () => {
 
   warmBtn.style.backgroundColor = "#d9d9d9";
   coolBtn.style.backgroundColor = "#d9d9d9";
+
+  document.querySelector(".currentTemp").innerText = `${room.currTemp}°`;
 });
 
 const coolBtn = document.getElementById("cool");
@@ -204,6 +227,8 @@ coolBtn.addEventListener("click", () => {
 
   warmBtn.style.backgroundColor = "#d9d9d9";
   coolBtn.style.backgroundColor = "#adbaff";
+
+  document.querySelector(".currentTemp").innerText = `${room.currTemp}°`;
 });
 
 warmBtn.addEventListener("click", () => {
@@ -216,6 +241,8 @@ warmBtn.addEventListener("click", () => {
 
   coolBtn.style.backgroundColor = "#d9d9d9";
   warmBtn.style.backgroundColor = "#ff9799";
+
+  document.querySelector(".currentTemp").innerText = `${room.currTemp}°`;
 });
 
 const inputsDiv = document.querySelector(".inputs");
