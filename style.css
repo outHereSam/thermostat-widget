@@ -84,7 +84,7 @@ body {
   position: absolute;
   left: -100px;
   top: -75px;
-  height: 260px;
+  height: 250px;
   /* margin: 50px 0 50px 0; */
 }
 .indicator {
@@ -94,8 +94,8 @@ body {
 svg.point {
   /* border: solid 1px pink; */
   position: absolute;
-  left: -73px;
-  top: 30px;
+  left: 35px;
+  top: 38px;
   height: 24px;
   z-index: 10;
   transition: transform 0.2s ease-in-out;

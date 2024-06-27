@@ -108,82 +108,23 @@ const rooms = [
 
 // Set svg accordingly
 const svgPoint = document.querySelector(".point");
+const angleOffset = 80;
+const calculatePointPosition = (currTemp) => {
+  const normalizedTemp = (currTemp - 10) / (32 - 10);
+  const angle = normalizedTemp * 180 + angleOffset;
+
+  const radians = (angle * Math.PI) / 180;
+  const radius = 116;
+
+  const translateX = radius * Math.cos(radians);
+  const translateY = radius * Math.sin(radians);
+
+  return { translateX, translateY };
+};
 
 const setIndicatorPoint = (currTemp) => {
-  switch (currTemp) {
-    case 10:
-      svgPoint.style.transform = "translate(120px, 136px)";
-      break;
-    case 11:
-      svgPoint.style.transform = "translate(100px, 136px)";
-      break;
-    case 12:
-      svgPoint.style.transform = "translate(90px, 134px)";
-      break;
-    case 13:
-      svgPoint.style.transform = "translate(80px, 130px)";
-      break;
-    case 14:
-      svgPoint.style.transform = "translate(70px, 128px)";
-      break;
-    case 15:
-      svgPoint.style.transform = "translate(60px, 123px)";
-      break;
-    case 16:
-      svgPoint.style.transform = "translate(50px, 116px)";
-      break;
-    case 17:
-      svgPoint.style.transform = "translate(40px, 108px)";
-      break;
-    case 18:
-      svgPoint.style.transform = "translate(30px, 98px)";
-      break;
-    case 19:
-      svgPoint.style.transform = "translate(20px, 86px)";
-      break;
-    case 20:
-      svgPoint.style.transform = "translate(10px, 68px)";
-      break;
-    case 21:
-      svgPoint.style.transform = "translate(0px, 42px)";
-      break;
-    case 22:
-      svgPoint.style.transform = "translate(-2px, 0px)";
-      break;
-    case 23:
-      svgPoint.style.transform = "translate(0px, -10px)";
-      break;
-    case 24:
-      svgPoint.style.transform = "translate(2px, -20px)";
-      break;
-    case 25:
-      svgPoint.style.transform = "translate(5px, -30px)";
-      break;
-    case 26:
-      svgPoint.style.transform = "translate(10px, -40px)";
-      break;
-    case 27:
-      svgPoint.style.transform = "translate(15px, -50px)";
-      break;
-    case 28:
-      svgPoint.style.transform = "translate(20px, -60px)";
-      break;
-    case 29:
-      svgPoint.style.transform = "translate(28px, -68px)";
-      break;
-    case 30:
-      svgPoint.style.transform = "translate(38px, -78px)";
-      break;
-    case 31:
-      svgPoint.style.transform = "translate(48px, -88px)";
-      break;
-    case 32:
-      svgPoint.style.transform = "translate(58px, -94px)";
-      break;
-
-    default:
-      svgPoint.style.transform = "translate(1px, -10px)";
-  }
+  const position = calculatePointPosition(currTemp);
+  svgPoint.style.transform = `translate(${position.translateX}px, ${position.translateY}px)`;
 };
 
 // Handle the dropdown data
@@ -257,7 +198,7 @@ coolBtn.addEventListener("click", () => {
   const room = rooms.find((currRoom) => currRoom.name === selectedRoom);
 
   room.setCurrTemp(room.coldPreset);
-  setIndicatorPoint(room.currTemp);
+  setIndicatorPoint(room.coldPreset);
 
   currentTemp.textContent = `${room.currTemp}°`;
 
@@ -269,7 +210,7 @@ warmBtn.addEventListener("click", () => {
   const room = rooms.find((currRoom) => currRoom.name === selectedRoom);
 
   room.setCurrTemp(room.warmPreset);
-  setIndicatorPoint(room.currTemp);
+  setIndicatorPoint(room.warmPreset);
 
   currentTemp.textContent = `${room.currTemp}°`;
 
