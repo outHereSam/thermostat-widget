@@ -110,6 +110,30 @@ const rooms = [
   },
 ];
 
+const coolOverlay = `linear-gradient(
+    to bottom,
+    rgba(141, 158, 247, 0.2),
+    rgba(194, 197, 215, 0.1)
+  )`;
+
+const warmOverlay = `linear-gradient(to bottom, rgba(236, 96, 98, 0.2), rgba(248, 210, 211, 0.13))`;
+
+const setInitialOverlay = () => {
+  document.querySelector(
+    ".room"
+  ).style.backgroundImage = `url('${rooms[0].image}')`;
+
+  document.querySelector(".room").style.backgroundImage = `${
+    rooms[0].currTemp < 22 ? coolOverlay : warmOverlay
+  }, url('${rooms[0].image}')`;
+};
+
+const setOverlay = (room) => {
+  document.querySelector(".room").style.backgroundImage = `${
+    room.currTemp < 22 ? coolOverlay : warmOverlay
+  }, url('${room.image}')`;
+};
+
 // Set svg accordingly
 const svgPoint = document.querySelector(".point");
 const angleOffset = 86;
@@ -142,9 +166,7 @@ let selectedRoom = rooms[0].name;
 currentTemp.textContent = `${rooms[0].currTemp}°`;
 setIndicatorPoint(rooms[0].currTemp);
 
-document.querySelector(
-  ".room"
-).style.backgroundImage = `url('${rooms[0].image}')`;
+setInitialOverlay();
 
 document.querySelector(".currentTemp").innerText = `${rooms[0].currTemp}°`;
 // Add new options from rooms array
@@ -166,9 +188,7 @@ roomSelect.addEventListener("change", function () {
   currentTemp.textContent = `${room.currTemp}°`;
 
   // Set the current room image
-  document.querySelector(
-    ".room"
-  ).style.backgroundImage = `url('${room.image}')`;
+  setOverlay(room);
 
   // Set the current room name
   document.querySelector(".room-name").innerText = selectedRoom;
@@ -191,6 +211,8 @@ document.getElementById("increase").addEventListener("click", () => {
   setIndicatorPoint(room.currTemp);
   currentTemp.textContent = `${room.currTemp}°`;
 
+  setOverlay(room);
+
   warmBtn.style.backgroundColor = "#d9d9d9";
   coolBtn.style.backgroundColor = "#d9d9d9";
 
@@ -206,6 +228,8 @@ document.getElementById("reduce").addEventListener("click", () => {
 
   setIndicatorPoint(room.currTemp);
   currentTemp.textContent = `${room.currTemp}°`;
+
+  setOverlay(room);
 
   warmBtn.style.backgroundColor = "#d9d9d9";
   coolBtn.style.backgroundColor = "#d9d9d9";
@@ -225,6 +249,8 @@ coolBtn.addEventListener("click", () => {
 
   currentTemp.textContent = `${room.currTemp}°`;
 
+  setOverlay(room);
+
   warmBtn.style.backgroundColor = "#d9d9d9";
   coolBtn.style.backgroundColor = "#adbaff";
 
@@ -238,6 +264,8 @@ warmBtn.addEventListener("click", () => {
   setIndicatorPoint(room.warmPreset);
 
   currentTemp.textContent = `${room.currTemp}°`;
+
+  setOverlay(room);
 
   coolBtn.style.backgroundColor = "#d9d9d9";
   warmBtn.style.backgroundColor = "#ff9799";

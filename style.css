@@ -23,6 +23,7 @@ button {
 }
 
 body {
+  padding: 50px 0;
   min-height: 100vh;
   background-color: var(--bg-light);
   display: flex;
@@ -272,6 +273,7 @@ svg.point {
   background-position: center;
   border-radius: 8px;
   padding: 20px;
+  transition: background 0.2s ease-in;
 }
 .room .text {
   display: flex;
