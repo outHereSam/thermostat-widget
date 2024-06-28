@@ -124,13 +124,13 @@ const setInitialOverlay = () => {
   ).style.backgroundImage = `url('${rooms[0].image}')`;
 
   document.querySelector(".room").style.backgroundImage = `${
-    rooms[0].currTemp < 22 ? coolOverlay : warmOverlay
+    rooms[0].currTemp < 25 ? coolOverlay : warmOverlay
   }, url('${rooms[0].image}')`;
 };
 
 const setOverlay = (room) => {
   document.querySelector(".room").style.backgroundImage = `${
-    room.currTemp < 22 ? coolOverlay : warmOverlay
+    room.currTemp < 25 ? coolOverlay : warmOverlay
   }, url('${room.image}')`;
 };
 
@@ -294,12 +294,12 @@ document.getElementById("save").addEventListener("click", () => {
 
   if (coolInput.value && warmInput.value) {
     // Validate the data
-    if (coolInput.value < 10 || coolInput.value > 22) {
+    if (coolInput.value < 10 || coolInput.value > 25) {
       errorSpan.style.display = "block";
       errorSpan.innerText = "Enter valid temperatures (10° - 32°)";
     }
 
-    if (warmInput.value < 22 || warmInput.value > 32) {
+    if (warmInput.value < 25 || warmInput.value > 32) {
       errorSpan.style.display = "block";
       errorSpan.innerText = "Enter valid temperatures (10° - 32°)";
     }
