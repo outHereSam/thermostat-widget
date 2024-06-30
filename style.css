@@ -332,6 +332,7 @@ svg.point {
 
 .room-control .top button.switch ion-icon {
   font-size: 24px;
+  pointer-events: none;
 }
 
 .time-display {
@@ -378,4 +379,15 @@ svg.point {
   .container {
     width: 320px;
   }
+}
+
+.powerOn {
+  color: #ffae33;
+}
+
+span.room-status {
+  display: block;
+  /* border: solid 1px pink; */
+  margin: 20px 0 0 0;
+  color: #7c7c83;
 }

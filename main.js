@@ -6,6 +6,7 @@ const rooms = [
     coldPreset: 20,
     warmPreset: 32,
     image: "./assets/living-room.jpg",
+    airConditionerOn: false,
 
     setCurrTemp(temp) {
       this.currTemp = temp;
@@ -25,6 +26,11 @@ const rooms = [
 
     increaseTemp() {
       this.currTemp++;
+    },
+    toggleAircon() {
+      this.airConditionerOn
+        ? (this.airConditionerOn = false)
+        : (this.airConditionerOn = true);
     },
   },
   {
@@ -33,6 +39,7 @@ const rooms = [
     coldPreset: 20,
     warmPreset: 32,
     image: "./assets/kitchen.jpg",
+    airConditionerOn: false,
 
     setCurrTemp(temp) {
       this.currTemp = temp;
@@ -52,6 +59,11 @@ const rooms = [
 
     increaseTemp() {
       this.currTemp++;
+    },
+    toggleAircon() {
+      this.airConditionerOn
+        ? (this.airConditionerOn = false)
+        : (this.airConditionerOn = true);
     },
   },
   {
@@ -60,6 +72,7 @@ const rooms = [
     coldPreset: 20,
     warmPreset: 32,
     image: "./assets/bathroom.jpg",
+    airConditionerOn: false,
 
     setCurrTemp(temp) {
       this.currTemp = temp;
@@ -79,6 +92,11 @@ const rooms = [
 
     increaseTemp() {
       this.currTemp++;
+    },
+    toggleAircon() {
+      this.airConditionerOn
+        ? (this.airConditionerOn = false)
+        : (this.airConditionerOn = true);
     },
   },
   {
@@ -87,6 +105,7 @@ const rooms = [
     coldPreset: 20,
     warmPreset: 32,
     image: "./assets/bedroom.jpg",
+    airConditionerOn: false,
 
     setCurrTemp(temp) {
       this.currTemp = temp;
@@ -106,6 +125,11 @@ const rooms = [
 
     increaseTemp() {
       this.currTemp++;
+    },
+    toggleAircon() {
+      this.airConditionerOn
+        ? (this.airConditionerOn = false)
+        : (this.airConditionerOn = true);
     },
   },
 ];
@@ -211,6 +235,8 @@ document.getElementById("increase").addEventListener("click", () => {
   setIndicatorPoint(room.currTemp);
   currentTemp.textContent = `${room.currTemp}°`;
 
+  generateRooms();
+
   setOverlay(room);
 
   warmBtn.style.backgroundColor = "#d9d9d9";
@@ -228,6 +254,8 @@ document.getElementById("reduce").addEventListener("click", () => {
 
   setIndicatorPoint(room.currTemp);
   currentTemp.textContent = `${room.currTemp}°`;
+
+  generateRooms();
 
   setOverlay(room);
 
@@ -248,6 +276,7 @@ coolBtn.addEventListener("click", () => {
   setIndicatorPoint(room.coldPreset);
 
   currentTemp.textContent = `${room.currTemp}°`;
+  generateRooms();
 
   setOverlay(room);
 
@@ -264,6 +293,7 @@ warmBtn.addEventListener("click", () => {
   setIndicatorPoint(room.warmPreset);
 
   currentTemp.textContent = `${room.currTemp}°`;
+  generateRooms();
 
   setOverlay(room);
 
@@ -323,13 +353,16 @@ const generateRooms = () => {
 
   rooms.forEach((room) => {
     roomsHTML += `
-    <div class="room-control">
+    <div class="room-control" id="${room.name}">
           <div class="top">
             <h3 class="room-name">${room.name} - ${room.currTemp}°</h3>
             <button class="switch">
-              <ion-icon name="power-outline"></ion-icon>
+              <ion-icon name="power-outline" class="${
+                room.airConditionerOn ? "powerOn" : ""
+              }"></ion-icon>
             </button>
           </div>
+         
           <div class="time-display">
             <span class="time">16:30</span>
             <div class="bars">
@@ -368,6 +401,9 @@ const generateRooms = () => {
             </div>
             <span class="time">20:00</span>
           </div>
+          <span class="room-status ${room.airConditionerOn ? "" : "hidden"}">${
+      room.currTemp < 25 ? "Cooling room to: " : "Warming room to: "
+    }${room.currTemp}</span>
         </div>
     `;
   });
@@ -376,3 +412,13 @@ const generateRooms = () => {
 };
 
 generateRooms();
+
+document.querySelector(".rooms-control").addEventListener("click", (e) => {
+  if (e.target.classList.contains("switch")) {
+    const room = rooms.find(
+      (room) => room.name === e.target.parentNode.parentNode.id
+    );
+    room.toggleAircon();
+    generateRooms();
+  }
+});
