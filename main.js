@@ -401,9 +401,11 @@ const generateRooms = () => {
             </div>
             <span class="time">20:00</span>
           </div>
-          <span class="room-status ${room.airConditionerOn ? "" : "hidden"}">${
-      room.currTemp < 25 ? "Cooling room to: " : "Warming room to: "
-    }${room.currTemp}</span>
+          <span class="room-status" style="display: ${
+            room.airConditionerOn ? "" : "none"
+          }">${room.currTemp < 25 ? "Cooling room to: " : "Warming room to: "}${
+      room.currTemp
+    }°</span>
         </div>
     `;
   });
