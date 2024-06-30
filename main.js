@@ -314,3 +314,65 @@ document.getElementById("save").addEventListener("click", () => {
     warmInput.value = "";
   }
 });
+
+// Rooms Control
+// Generate rooms
+const generateRooms = () => {
+  const roomsControlContainer = document.querySelector(".rooms-control");
+  let roomsHTML = "";
+
+  rooms.forEach((room) => {
+    roomsHTML += `
+    <div class="room-control">
+          <div class="top">
+            <h3 class="room-name">${room.name} - ${room.currTemp}°</h3>
+            <button class="switch">
+              <ion-icon name="power-outline"></ion-icon>
+            </button>
+          </div>
+          <div class="time-display">
+            <span class="time">16:30</span>
+            <div class="bars">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+            </div>
+            <span class="time">20:00</span>
+          </div>
+        </div>
+    `;
+  });
+
+  roomsControlContainer.innerHTML = roomsHTML;
+};
+
+generateRooms();

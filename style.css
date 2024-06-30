@@ -39,6 +39,12 @@ body {
   width: 450px;
 }
 
+.main-container {
+  display: flex;
+  gap: 20px;
+  align-items: start;
+}
+
 .main-content {
   display: flex;
   flex-direction: column;
@@ -286,6 +292,80 @@ svg.point {
   align-items: center;
   color: #ffffff;
   z-index: 10;
+}
+
+.room-control {
+  padding: 30px 0 30px 0;
+  border-bottom: solid 1px #e7e7e7;
+}
+
+.room-control:first-child {
+  padding-top: 0;
+}
+
+.room-control:last-child {
+  margin-bottom: 0;
+  border: none;
+}
+
+.room-control .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.room-control .top button.switch {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: solid 1px #d7d7d7;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in;
+}
+
+.room-control .top button.switch:hover {
+  background-color: #d5d5d5;
+}
+
+.room-control .top button.switch ion-icon {
+  font-size: 24px;
+}
+
+.time-display {
+  display: flex; /* Make time elements horizontal */
+  justify-content: space-between;
+  gap: 10px;
+  border: solid 1px #e7e7e7;
+  margin: 20px 0 0 0;
+  padding: 10px 20px;
+  border-radius: 26px;
+  font-size: 14px;
+}
+
+.bars {
+  /* border: solid 1px pink; */
+  /* width: 100%; */
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.bar {
+  display: inline-block;
+  height: 100%;
+  width: 1px;
+  background-color: #e7e7e7;
+}
+
+.bars .bar:nth-child(n + 1):nth-child(-n + 15) {
+  background-color: #ffae33;
+}
+
+.time {
+  padding-left: 10px; /* Add spacing between times */
 }
 
 @media only screen and (max-width: 470px) {
