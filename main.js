@@ -202,9 +202,8 @@ rooms.forEach((room) => {
 });
 
 // Set current temperature to currently selected room
-roomSelect.addEventListener("change", function () {
-  selectedRoom = this.value;
 
+const setSelectedRoom = (selectedRoom) => {
   const room = rooms.find((currRoom) => currRoom.name === selectedRoom);
   setIndicatorPoint(room.currTemp);
 
@@ -218,6 +217,12 @@ roomSelect.addEventListener("change", function () {
   document.querySelector(".room-name").innerText = selectedRoom;
 
   document.querySelector(".currentTemp").innerText = `${room.currTemp}°`;
+};
+
+roomSelect.addEventListener("change", function () {
+  selectedRoom = this.value;
+
+  setSelectedRoom(selectedRoom);
 });
 
 // Set current temperature to to cold or warm preset
@@ -422,5 +427,9 @@ document.querySelector(".rooms-control").addEventListener("click", (e) => {
     );
     room.toggleAircon();
     generateRooms();
+  }
+
+  if (e.target.classList.contains("room-name")) {
+    setSelectedRoom(e.target.parentNode.parentNode.id);
   }
 });
