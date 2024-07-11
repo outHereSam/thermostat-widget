@@ -350,20 +350,7 @@ document.getElementById("save").addEventListener("click", () => {
 const generateRooms = () => {
   const roomsControlContainer = document.querySelector(".rooms-control");
   let roomsHTML = "";
-
-  rooms.forEach((room) => {
-    roomsHTML += `
-    <div class="room-control" id="${room.name}">
-          <div class="top">
-            <h3 class="room-name">${room.name} - ${room.currTemp}°</h3>
-            <button class="switch">
-              <ion-icon name="power-outline" class="${
-                room.airConditionerOn ? "powerOn" : ""
-              }"></ion-icon>
-            </button>
-          </div>
-         
-          <div class="time-display">
+  let timeDisplayHTML = `<div class="time-display">
             <span class="time">16:30</span>
             <div class="bars">
               <span class="bar"></span>
@@ -400,7 +387,20 @@ const generateRooms = () => {
               <span class="bar"></span>
             </div>
             <span class="time">20:00</span>
+          </div>`;
+
+  rooms.forEach((room) => {
+    roomsHTML += `
+    <div class="room-control" id="${room.name}">
+          <div class="top">
+            <h3 class="room-name">${room.name} - ${room.currTemp}°</h3>
+            <button class="switch">
+              <ion-icon name="power-outline" class="${
+                room.airConditionerOn ? "powerOn" : ""
+              }"></ion-icon>
+            </button>
           </div>
+          ${timeDisplayHTML}
           <span class="room-status" style="display: ${
             room.airConditionerOn ? "" : "none"
           }">${room.currTemp < 25 ? "Cooling room to: " : "Warming room to: "}${
