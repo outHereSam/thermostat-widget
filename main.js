@@ -240,7 +240,7 @@ document.getElementById("increase").addEventListener("click", () => {
   setIndicatorPoint(room.currTemp);
   currentTemp.textContent = `${room.currTemp}°`;
 
-  generateRooms();
+  // generateRooms();
 
   setOverlay(room);
 
@@ -260,7 +260,7 @@ document.getElementById("reduce").addEventListener("click", () => {
   setIndicatorPoint(room.currTemp);
   currentTemp.textContent = `${room.currTemp}°`;
 
-  generateRooms();
+  // generateRooms();
 
   setOverlay(room);
 
@@ -281,7 +281,7 @@ coolBtn.addEventListener("click", () => {
   setIndicatorPoint(room.coldPreset);
 
   currentTemp.textContent = `${room.currTemp}°`;
-  generateRooms();
+  // generateRooms();
 
   setOverlay(room);
 
@@ -298,7 +298,7 @@ warmBtn.addEventListener("click", () => {
   setIndicatorPoint(room.warmPreset);
 
   currentTemp.textContent = `${room.currTemp}°`;
-  generateRooms();
+  // generateRooms();
 
   setOverlay(room);
 
@@ -352,84 +352,84 @@ document.getElementById("save").addEventListener("click", () => {
 
 // Rooms Control
 // Generate rooms
-const generateRooms = () => {
-  const roomsControlContainer = document.querySelector(".rooms-control");
-  let roomsHTML = "";
+// const generateRooms = () => {
+//   const roomsControlContainer = document.querySelector(".rooms-control");
+//   let roomsHTML = "";
 
-  rooms.forEach((room) => {
-    roomsHTML += `
-    <div class="room-control" id="${room.name}">
-          <div class="top">
-            <h3 class="room-name">${room.name} - ${room.currTemp}°</h3>
-            <button class="switch">
-              <ion-icon name="power-outline" class="${
-                room.airConditionerOn ? "powerOn" : ""
-              }"></ion-icon>
-            </button>
-          </div>
-         
-          <div class="time-display">
-            <span class="time">16:30</span>
-            <div class="bars">
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-            </div>
-            <span class="time">20:00</span>
-          </div>
-          <span class="room-status" style="display: ${
-            room.airConditionerOn ? "" : "none"
-          }">${room.currTemp < 25 ? "Cooling room to: " : "Warming room to: "}${
-      room.currTemp
-    }°</span>
-        </div>
-    `;
-  });
+//   rooms.forEach((room) => {
+//     roomsHTML += `
+//     <div class="room-control" id="${room.name}">
+//           <div class="top">
+//             <h3 class="room-name">${room.name} - ${room.currTemp}°</h3>
+//             <button class="switch">
+//               <ion-icon name="power-outline" class="${
+//                 room.airConditionerOn ? "powerOn" : ""
+//               }"></ion-icon>
+//             </button>
+//           </div>
 
-  roomsControlContainer.innerHTML = roomsHTML;
-};
+//           <div class="time-display">
+//             <span class="time">16:30</span>
+//             <div class="bars">
+//               <span class="bar"></span>
+//               <span class="bar"></span>
+//               <span class="bar"></span>
+//               <span class="bar"></span>
+//               <span class="bar"></span>
+//               <span class="bar"></span>
+//               <span class="bar"></span>
+//               <span class="bar"></span>
+//               <span class="bar"></span>
+//               <span class="bar"></span>
+//               <span class="bar"></span>
+//               <span class="bar"></span>
+//               <span class="bar"></span>
+//               <span class="bar"></span>
+//               <span class="bar"></span>
+//               <span class="bar"></span>
+//               <span class="bar"></span>
+//               <span class="bar"></span>
+//               <span class="bar"></span>
+//               <span class="bar"></span>
+//               <span class="bar"></span>
+//               <span class="bar"></span>
+//               <span class="bar"></span>
+//               <span class="bar"></span>
+//               <span class="bar"></span>
+//               <span class="bar"></span>
+//               <span class="bar"></span>
+//               <span class="bar"></span>
+//               <span class="bar"></span>
+//               <span class="bar"></span>
+//               <span class="bar"></span>
+//               <span class="bar"></span>
+//             </div>
+//             <span class="time">20:00</span>
+//           </div>
+//           <span class="room-status" style="display: ${
+//             room.airConditionerOn ? "" : "none"
+//           }">${room.currTemp < 25 ? "Cooling room to: " : "Warming room to: "}${
+//       room.currTemp
+//     }°</span>
+//         </div>
+//     `;
+//   });
 
-generateRooms();
+//   roomsControlContainer.innerHTML = roomsHTML;
+// };
 
-document.querySelector(".rooms-control").addEventListener("click", (e) => {
-  if (e.target.classList.contains("switch")) {
-    const room = rooms.find(
-      (room) => room.name === e.target.parentNode.parentNode.id
-    );
-    room.toggleAircon();
-    generateRooms();
-  }
+// generateRooms();
 
-  if (e.target.classList.contains("room-name")) {
-    setSelectedRoom(e.target.parentNode.parentNode.id);
-  }
-});
+// document.querySelector(".rooms-control").addEventListener("click", (e) => {
+//   if (e.target.classList.contains("switch")) {
+//     const room = rooms.find(
+//       (room) => room.name === e.target.parentNode.parentNode.id
+//     );
+//     room.toggleAircon();
+//     // generateRooms();
+//   }
+
+//   if (e.target.classList.contains("room-name")) {
+//     setSelectedRoom(e.target.parentNode.parentNode.id);
+//   }
+// });

@@ -25,7 +25,6 @@
       <div class="container">
         <div class="top-content">
           <h1 class="logo">Thermostat</h1>
-          <select id="rooms"></select>
         </div>
         <!-- Interior card -->
         <div class="room">
@@ -113,7 +112,29 @@
         </div>
       </div>
 
-      <div class="container rooms-control"></div>
+      <div class="container rooms-control">
+        <div class="grid">
+          <div class="room-select">
+            <select id="rooms"></select>
+          </div>
+          <div class="toggle">
+            <label class="toggle-switch">
+              <input type="checkbox" />
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="slider-container">
+            <input
+              type="range"
+              min="0"
+              max="5"
+              value="2"
+              class="fan-slider"
+              id="fanSlider"
+            />
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Ionicons -->
